@@ -21,14 +21,14 @@ const dinos = [
         age: 50,
         owner: 'Zac',
         adventrues: [],
-        health: 100,
+        health: 1,
         imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/81IrOfuA3LL._AC_SX425_.jpg'
     },
     {
         id: 'dino3',
         name: 'Smith',
         type: 'something3',
-        age: 90,
+        age: 45,
         owner: 'Jacob',
         adventrues: [],
         health: 100,
@@ -69,6 +69,21 @@ const viewSingleDino = (e) => {
     document.getElementById('close-single-view').addEventListener('click', closeSingleViewEvent)
 }
 
+const dinoHealth = (e) => {
+    const dinoId = e.target.closest('.card').id;
+    const dinoPosition = dinos.findIndex((p) => p.id === dinoId);
+    dinos[dinoPosition].health += 1;
+    //+= means take whats currently there and add 1
+    printDinos(dinos);
+}
+
+const petEvents = () => {
+    const dinoPetButtons =  document.getElementsByClassName('dino-photo');
+    for(let i = 0; i < dinoPetButtons.length; i++){
+        dinoPetButtons[i].addEventListener('mouseenter', dinoHealth);
+    }
+}
+
 const singleDinoAddEvents = () => {
     const dinoViewButton =  document.getElementsByClassName('single-dino');
     for(let i = 0; i < dinoViewButton.length; i++){
@@ -81,7 +96,7 @@ const printDinos = (dinoArr) => {
     for(i = 0; i < dinoArr.length; i++){
         domString +=    `<div class="col-4">`;
         domString +=    `<div id="${dinoArr[i].id}" class="card">`;
-        domString +=    `<img src="${dinoArr[i].imageUrl}" class="card-img-top" alt="Card image cap">`;
+        domString +=    `<img src="${dinoArr[i].imageUrl}" class="card-img-top dino-photo" alt="Card image cap">`;
         domString +=    `<div class="card-body">`;
         domString +=    `<h5 class="card-title">${dinoArr[i].name}</h5>`;
         domString +=    `<p class="card-text">Health: ${dinoArr[i].health}</p>`;
@@ -92,6 +107,7 @@ const printDinos = (dinoArr) => {
     }
     printToDom('kennel', domString);
     singleDinoAddEvents();
+    petEvents();
 }
 
 
