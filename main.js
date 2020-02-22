@@ -1,4 +1,5 @@
-const dinos = [4];
+const dinos = [];
+
 
 const newDino = (e) => {
     e.preventDefault();
@@ -13,7 +14,8 @@ const newDino = (e) => {
         imageUrl: document.getElementById('dino-image').value
     }
     dinos.push(brandNewDino);
-    console.log("helloworld", dinos)    
+    document.getElementById('new-dino-form').reset();
+    console.log("helloworld", dinos);
 };
 
 const init = () => {
