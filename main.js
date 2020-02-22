@@ -11,7 +11,7 @@ const dinos = [
         age: 100,
         owner: 'Zoe',
         adventrues: [],
-        health: 100,
+        health: 99,
         imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/81IrOfuA3LL._AC_SX425_.jpg'
     },
     {
@@ -72,9 +72,11 @@ const viewSingleDino = (e) => {
 const dinoHealth = (e) => {
     const dinoId = e.target.closest('.card').id;
     const dinoPosition = dinos.findIndex((p) => p.id === dinoId);
-    dinos[dinoPosition].health += 1;
-    //+= means take whats currently there and add 1
-    printDinos(dinos);
+    if(dinos[dinoPosition].health < 100) {
+        dinos[dinoPosition].health += 1;
+        //+= means take whats currently there and add 1
+        printDinos(dinos);
+    }
 }
 
 const petEvents = () => {
