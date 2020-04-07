@@ -2,4 +2,4 @@
 
 # Screen Shot
 
-![Main Screen](./screenshot/dino-kennel-1.png)
+![Main Screen](./screenshots/dino-kennel-1.png)
